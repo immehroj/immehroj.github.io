@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>С днём рождения, Колобоки ман 💕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: linear-gradient(135deg, #ffe0ec 0%, #ffd6e7 40%, #f8bbd9 100%);
+    min-height: 100vh;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .petal {
+    position: fixed;
+    font-size: 18px;
+    animation: fall linear infinite;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+  }
+
+  @keyframes fall {
+    0%   { transform: translateY(-40px) rotate(0deg); opacity: 0.8; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+  .card {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    border: 1.5px solid rgba(255,150,180,0.35);
+    padding: 48px 44px 40px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 8px 40px rgba(220, 80, 130, 0.12);
+  }
+
+  .hearts-top {
+    font-size: 28px;
+    margin-bottom: 16px;
+    animation: pulse 2s ease-in-out infinite;
+    letter-spacing: 6px;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+  }
+
+  .subtitle {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d4608a;
+    margin-bottom: 12px;
+  }
+
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: #b5275e;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  .divider {
+    margin: 20px auto;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #e8749b, transparent);
+    border-radius: 2px;
+  }
+
+  .message {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: #7a3050;
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+
+  .tag {
+    display: inline-block;
+    background: rgba(220, 100, 150, 0.12);
+    border: 1px solid rgba(220, 100, 150, 0.3);
+    color: #c0476f;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin: 4px;
+    font-weight: 400;
+  }
+
+  .footer-heart {
+    margin-top: 28px;
+    font-size: 22px;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  .open-btn {
+    margin-top: 24px;
+    background: linear-gradient(135deg, #e8749b, #c94a7a);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 32px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 16px rgba(200, 70, 120, 0.3);
+  }
+  .open-btn:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(200,70,120,0.4); }
+  .open-btn:active { transform: scale(0.97); }
+
+  .overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(180, 50, 90, 0.55);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+  .overlay.visible { display: flex; }
+
+  .letter {
+    background: #fff8fb;
+    border-radius: 20px;
+    padding: 40px 36px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 16px 60px rgba(180,50,90,0.25);
+  }
+
+  .letter h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: #b5275e;
+    margin-bottom: 16px;
+  }
+
+  .letter p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #6a2040;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .close-btn {
+    background: none;
+    border: 1.5px solid #e8749b;
+    color: #c94a7a;
+    border-radius: 50px;
+    padding: 8px 24px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    transition: background 0.15s;
+  }
+  .close-btn:hover { background: rgba(232,116,155,0.1); }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="hearts-top">🌸 💕 🌸</div>
+  <div class="subtitle">С днём рождения</div>
+  <div class="name">Колобоки ман</div>
+  <div class="divider"></div>
+  <div class="message">
+    В этот особенный день я хочу, чтобы ты знала —<br>
+    ты делаешь каждый мой день<br>
+    немного теплее и намного счастливее. 🌹
+  </div>
+  <div>
+    <span class="tag">💖 Люблю тебя</span>
+    <span class="tag">🌷 Ты особенная</span>
+    <span class="tag">✨ Счастья тебе</span>
+  </div>
+  <button class="open-btn" onclick="openLetter()">Открыть письмо 💌</button>
+  <div class="footer-heart">💗</div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="letter">
+    <div style="font-size:36px;margin-bottom:12px;">💌</div>
+    <h2> Хандалача </h2>
+    <p>
+      Ты — моя любимая, моя радость и моё вдохновение.<br><br>
+      Пусть этот день подарит тебе столько же счастья, сколько ты даришь мне каждый день.<br><br>
+      Желаю тебе всего самого лучшего — улыбок, тепла и любви. 🌹
+    </p>
+    <div style="font-size:20px;margin-bottom:20px;">💕 С любовью, только для тебя 💕</div>
+    <button class="close-btn" onclick="closeLetter()">Закрыть ✕</button>
+  </div>
+</div>
+
+<script>
+  const emojis = ['🌸','💕','🌹','💖','✨','🌷','💗','🫧'];
+
+  function makePetal() {
+    const el = document.createElement('div');
+    el.className = 'petal';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = Math.random() * 100 + '%';
+    el.style.fontSize = (14 + Math.random() * 14) + 'px';
+    const dur = 4 + Math.random() * 5;
+    el.style.animationDuration = dur + 's';
+    el.style.animationDelay = (Math.random() * 3) + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), (dur + 4) * 1000);
+  }
+
+  for (let i = 0; i < 20; i++) makePetal();
+  setInterval(makePetal, 700);
+
+  function openLetter() {
+    document.getElementById('overlay').classList.add('visible');
+  }
+  function closeLetter() {
+    document.getElementById('overlay').classList.remove('visible');
+  }
+</script>
+</body>
+</html>
